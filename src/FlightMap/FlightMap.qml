@@ -55,6 +55,7 @@ Map {
         // is nothing to do.
         _map.visibleRegion = QtPositioning.rectangle(QtPositioning.coordinate(0, 0), QtPositioning.coordinate(0, 0))
         _map.visibleRegion = region
+
     }
 
     function _possiblyCenterToVehiclePosition() {

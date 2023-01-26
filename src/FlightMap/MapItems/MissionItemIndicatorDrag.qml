@@ -76,7 +76,9 @@ Rectangle {
         onClicked: {
             focus = true
             itemDragger.clicked()
-        }
+            console.log("MouseAreaMapTap: " + searchField.text)
+
+s        }
 
         property bool dragActive: drag.active
         onDragActiveChanged: {

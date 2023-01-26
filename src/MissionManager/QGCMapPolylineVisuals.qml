@@ -299,6 +299,7 @@ Item {
                 opacity:    _root.opacity
 
                 Component.onCompleted: {
+                    console.log("Component.onCompleted:qgc")
                     var dragHandle = dragHandleComponent.createObject(mapControl)
                     dragHandle.coordinate = Qt.binding(function() { return object.coordinate })
                     dragHandle.polylineVertex = Qt.binding(function() { return index })

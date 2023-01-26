@@ -30,6 +30,7 @@ import QGroundControl.Airmap            1.0
 Item {
     id: _root
 
+    property var map
     property bool planControlColapsed: false
 
     readonly property int   _decimalPlaces:             8
@@ -646,13 +647,23 @@ Item {
                             insertLandItemAfterCurrent()
                         }
                     },
+
+
                     ToolStripAction {
                         text:               qsTr("Center")
                         iconSource:         "/qmlimages/MapCenter.svg"
                         enabled:            true
                         visible:            true
                         dropPanelComponent: centerMapDropPanel
+                    },
+                    ToolStripAction {
+                        text:               qsTr("Location")
+                        iconSource:         "/qmlimages/ZoomMinus.svg"
+                        enabled:            true
+                        visible:            true
+                        onTriggered:        editorMap.centerToSpecifiedLocation()
                     }
+                  
                 ]
             }
 
@@ -916,6 +927,89 @@ Item {
             fitFunctions:   mapFitFunctions
         }
     }
+    
+    Component {
+           id: searchBarComponent
+
+           Row {
+               id: searchBar
+               width: parent.width
+
+               TextField {
+                   id: searchField
+                   placeholderText: "Enter location"
+                   onTextChanged: {
+                       // Perform search with the new text
+                       console.log("text value: " + searchField.text)
+                   }
+               }
+
+               Button {
+                   text: "Search"
+                   onClicked: {
+                       // Perform search with the text in the searchField
+                       console.log("SearchTapped: " + searchField.text)
+
+
+                      editorMap.centerToSpecifiedLocation()
+                   }
+               }
+           }
+       }
+
+    EditPositionDialogController {
+        id: controller
+
+        Component.onCompleted: initValues()
+    }
+//    Item{
+//        id:myDelegate
+//        width:100
+//        height:40
+
+//        TextField {
+//            id: listText
+//            placeholderText: "Enter location"
+//            onTextChanged: {
+//                // Perform search with the new text
+//            }
+//        }
+//    }
+
+//    Component {
+//           id: searchBarComponent1
+
+//    Row {
+
+//        property var cities: [
+//            { title: "Mumbai" },
+//            { title: "Pune" },
+//            { title: "Bangalore" },
+//            { title: "Kolkata" },
+//            { title: "Hyderabad" },
+//            { title: "Nagpur" },
+//            { title: "Thane" }
+//        ]
+//        ColumnLayout {
+//            anchors.fill: parent
+//            TextField {
+//                id: textField
+//                Layout.fillWidth: true
+//                placeholderText: qsTr("Type something here")
+//            }
+//            ListView {
+//                Layout.fillWidth: true
+//                Layout.fillHeight: true
+//                model: cities.filter( city => !textField.text || city.title.toLowerCase().indexOf(textField.text.toLowerCase()) !== -1 )
+//                delegate: myDelegate
+//            }
+//        }
+//    }
+//    }
+
+
+
+
 
     Component {
         id: patternDropPanel

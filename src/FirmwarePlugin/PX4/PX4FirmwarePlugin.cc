@@ -601,7 +601,12 @@ void PX4FirmwarePlugin::guidedModeChangeEquivalentAirspeed(Vehicle* vehicle, dou
 
 void PX4FirmwarePlugin::startMission(Vehicle* vehicle)
 {
-    if (_setFlightModeAndValidate(vehicle, missionFlightMode())) {
+    double altitude = qgcApp()->toolbox()->settingsManager()->appSettings()->defaultMissionItemAltitude()->rawValue().toDouble();
+    if(altitude<75.0){
+        qgcApp()->showAppMessage(tr("You can't fly att his height. Please increase default height from settings."));
+        return;
+    }
+    else if (_setFlightModeAndValidate(vehicle, missionFlightMode())) {
         if (!_armVehicleAndValidate(vehicle)) {
             qgcApp()->showAppMessage(tr("Unable to start mission: Vehicle rejected arming."));
             return;

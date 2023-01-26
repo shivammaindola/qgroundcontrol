@@ -82,13 +82,13 @@ ColumnLayout {
         }
     }
 
-    QGCButton {
-        text:               qsTr("Specified Location")
-        Layout.fillWidth:   true
+//    QGCButton {
+//        text:               qsTr("Specified Location")
+//        Layout.fillWidth:   true
 
-        onClicked: {
-            dropPanel.hide()
-            map.centerToSpecifiedLocation()
-        }
-    }
+//        onClicked: {
+//            dropPanel.hide()
+//            map.centerToSpecifiedLocation()
+//        }
+//    }
 } // Column

@@ -434,6 +434,7 @@ Item {
                 property var _visuals: [ ]
 
                 Component.onCompleted: {
+                    console.log("Component.onCompleted")
                     var dragHandle = dragHandleComponent.createObject(mapControl)
                     dragHandle.coordinate = Qt.binding(function() { return object.coordinate })
                     dragHandle.polygonVertex = Qt.binding(function() { return index })
@@ -445,6 +446,8 @@ Item {
                 }
 
                 Component.onDestruction: {
+                    console.log("Component.onDestruction")
+
                     for (var i=0; i<_visuals.length; i++) {
                         _visuals[i].destroy()
                     }

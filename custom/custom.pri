@@ -67,7 +67,7 @@ INCLUDEPATH += \
     $$PWD/src \
 
 #-------------------------------------------------------------------------------------
-# Custom Firmware/AutoPilot Plugin
+#Custom Firmware/AutoPilot Plugin
 
 INCLUDEPATH += \
     $$PWD/src/FirmwarePlugin \

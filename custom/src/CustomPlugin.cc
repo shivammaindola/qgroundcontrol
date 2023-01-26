@@ -41,7 +41,7 @@ bool CustomFlyViewOptions::showMultiVehicleList(void) const
 // This custom build has it's own custom instrument panel. Don't show regular one.
 bool CustomFlyViewOptions::showInstrumentPanel(void) const
 {
-    return false;
+    return true;
 }
 
 CustomOptions::CustomOptions(CustomPlugin*, QObject* parent)
@@ -57,7 +57,7 @@ QGCFlyViewOptions* CustomOptions::flyViewOptions(void)
     return _flyViewOptions;
 }
 
-// Firmware upgrade page is only shown in Advanced Mode.
+// Firmware upgrade ly page is onshown in Advanced Mode.
 bool CustomOptions::showFirmwareUpgrade() const
 {
     return qgcApp()->toolbox()->corePlugin()->showAdvancedUI();
@@ -75,7 +75,7 @@ CustomPlugin::CustomPlugin(QGCApplication *app, QGCToolbox* toolbox)
     : QGCCorePlugin(app, toolbox)
 {
     _options = new CustomOptions(this, this);
-    _showAdvancedUI = false;
+    _showAdvancedUI = true;
 }
 
 CustomPlugin::~CustomPlugin()
@@ -145,9 +145,7 @@ bool CustomPlugin::overrideSettingsGroupVisibility(QString name)
 {
     // We have set up our own specific brand imaging. Hide the brand image settings such that the end user
     // can't change it.
-    if (name == BrandImageSettings::name) {
-        return false;
-    }
+
     return true;
 }
 

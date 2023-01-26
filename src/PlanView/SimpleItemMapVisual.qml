@@ -61,6 +61,7 @@ Item {
     }
 
     function showDragArea() {
+        console.log("showDragArea")
         if (!_dragAreaShowing) {
             _dragArea = dragAreaComponent.createObject(map)
             _dragAreaShowing = true
@@ -68,6 +69,7 @@ Item {
     }
 
     function updateDragArea() {
+        console.log("updateDragArea")
         if (_missionItem.isCurrentItem && map.planView && _missionItem.specifiesCoordinate) {
             showDragArea()
         } else {
@@ -76,6 +78,8 @@ Item {
     }
 
     Component.onCompleted: {
+        console.log("onCompleted")
+
         showItemVisuals()
         updateDragArea()
     }
