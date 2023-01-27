@@ -330,7 +330,7 @@ ApplicationWindow {
                         height:             toolSelectDialog._toolButtonHeight
                         Layout.fillWidth:   true
                         text:               qsTr("Application Settings")
-                        imageResource:      "/res/QGCLogoFull"
+                        imageResource:      "/res/cloud_app_icon_adobe_express"
                         imageColor:         "transparent"
                         visible:            !QGroundControl.corePlugin.options.combineSettingsAndSetup
                         onClicked: {

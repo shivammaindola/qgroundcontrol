@@ -1550,3 +1550,5 @@ LinuxBuild {
 
     INSTALLS += target share_qgroundcontrol share_icons share_metainfo share_applications
 }
+
+RESOURCES +=
